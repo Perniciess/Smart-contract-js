@@ -29,6 +29,9 @@
 	border: none;
 	background-image: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
 	color: white;
+	border: none;
+	border-radius: 6px;
+	margin: 0 auto;
 }
 
 .connect_wallet button:hover {

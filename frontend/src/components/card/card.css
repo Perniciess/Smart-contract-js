@@ -83,7 +83,9 @@
 	transition: all 0.2s ease;
 }
 
-.btn-more {
+
+.span-rented {
+	text-align: center;
 	width: 80%;
 	padding: 10px;
 	font-size: 13px;
@@ -97,13 +99,12 @@
 	transition: all 0.2s ease;
 }
 
-.btn-book:hover,
-.btn-more:hover {
+.btn-book:hover {
 	transform: translateY(-1px);
 	opacity: 0.9;
 }
 
-/* Адаптивность */
+
 @media (max-width: 480px) {
 	.car-card {
 		width: 90%;

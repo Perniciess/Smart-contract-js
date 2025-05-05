@@ -83,7 +83,7 @@ export function WalletProvider({ children }) {
     if (window.ethereum.networkVersion === HARDHAT_NETWORK_ID) {
       return true
     }
-    setNetworkError('Please connect to localhost:8545')
+    setNetworkError('Подключитесь localhost:8545')
     return false
   }
 

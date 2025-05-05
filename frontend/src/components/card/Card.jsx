@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useWallet } from '../../hooks/useWallet'
 import { Contract } from 'ethers'
 import './card.css'
@@ -8,11 +8,36 @@ export function CarCard({ car, contract }) {
   const { selectedAccount, balance, signer, provider } = useWallet() 
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [status, setStatus] = useState('free')
 
+
+  const fetchCarStatus = async () => {
+    try {
+      const res = await fetch(`http://localhost:3000/cars/${car.id}`)
+      const data = await res.json()
+      if (data && data.status) {
+        setStatus(data.status)
+      }
+    } catch (err) {
+      console.error('Ошибка при загрузке статуса машины:', err)
+    }
+  }
+
+  useEffect(() => {
+    fetchCarStatus()
+
+    const interval = setInterval(() => {
+      fetchCarStatus()
+    }, 2000)
+
+    return () => clearInterval(interval)
+  }, [car.id]) 
+
+  
   const handleRentCar = async () => {
     try {
       if (!selectedAccount) {
-        alert('Please connect your wallet!')
+        alert('Пожалуйста подключите свой криптокошелек')
         return
       }
 
@@ -26,7 +51,6 @@ export function CarCard({ car, contract }) {
       })
 
       await tx.wait()
-      alert('Аренда успешна!')
     } catch (err) {
       setError('Произошла ошибка при аренде. Попробуйте снова.')
     } finally {
@@ -59,11 +83,17 @@ export function CarCard({ car, contract }) {
           <p className="spec-value">{car.specs.acceleration}</p>
         </div>
 
+
         <div className="car-buttons">
-          <button className="btn-book" onClick={handleRentCar} disabled={isLoading}>
-            {isLoading ? 'Подтверждение транзакции...' : 'Забронировать'}
-          </button>
-          <button className="btn-more">Подробнее</button>
+          {status === 'free' ? (
+            <button className="btn-book" onClick={handleRentCar} disabled={isLoading}>
+              {isLoading ? 'Подтверждение транзакции...' : 'Забронировать'}
+            </button>
+          ) : (
+            <span className="span-rented" disabled>
+              Уже арендована
+            </span>
+          )}
         </div>
 
         {error && <p className="error">{error}</p>}

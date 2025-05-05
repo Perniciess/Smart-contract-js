@@ -3,7 +3,7 @@ export function NetworkErrorMessage({ message, dismiss }) {
 		<div>
 			{message}
 			<button type="button" onClick={dismiss}>
-				<span aria-hidden="true">&times</span>
+				<span aria-hidden="true">ошибка</span>
 			</button>
 		</div>
 	)

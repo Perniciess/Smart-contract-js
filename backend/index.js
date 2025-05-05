@@ -46,6 +46,13 @@ async function init() {
 
 app.get("/cars", (req, res) => res.json(cars));
 
+
+app.get("/cars/:id", (req, res) => {
+  const car = cars[req.params.id];
+  if (!car) return res.status(404).json({ error: "Car not found" });
+  res.json(car);
+});
+
 const PORT = 3000;
 app.listen(PORT, async () => {
   console.log(`\n🚀 Сервер запущен на http://localhost:${PORT}`);
