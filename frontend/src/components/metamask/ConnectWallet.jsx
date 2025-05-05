@@ -1,28 +1,20 @@
-import { NetworkErrorMessage } from './NetworkErrorMessage'
-import './ConnectWallet.css'
+import { NetworkErrorMessage } from './NetworkErrorMessage';
+import './ConnectWallet.css';
 
 export function ConnectWallet({ connectWallet, networkError, dismiss }) {
-  const handleConnect = async () => {
-    await connectWallet()
-  }
+	const handleConnect = async () => {
+		await connectWallet();
+	};
 
-  return (
-    <div className="connect_wallet">
-      {networkError && (
-        <NetworkErrorMessage
-          message={networkError}
-          dismiss={dismiss}
-        />
-      )}
+	return (
+		<div className="connect_wallet">
+			{networkError && <NetworkErrorMessage message={networkError} dismiss={dismiss} />}
 
-      <p>Подключите ваш криптокошелек</p>
+			<p>Подключите ваш криптокошелек</p>
 
-      <button
-        type="button"
-        onClick={handleConnect}
-      >
-        Подключить
-      </button>
-    </div>
-  )
+			<button type="button" onClick={handleConnect}>
+				Подключить
+			</button>
+		</div>
+	);
 }

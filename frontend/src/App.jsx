@@ -6,14 +6,14 @@ import { WalletProvider } from './hooks/useWallet'
 
 function App() {
   return (
-    <>
-      <WalletProvider>
-        <Header />
-        <WalletConnection />
-        <CarsCatalog />
-      </WalletProvider>
-    </>
-  )
+		<>
+			<WalletProvider>
+				<Header />
+				<WalletConnection />
+				<CarsCatalog />
+			</WalletProvider>
+		</>
+	)
 }
 
 export default App

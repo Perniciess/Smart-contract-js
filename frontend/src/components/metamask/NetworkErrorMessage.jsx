@@ -6,5 +6,5 @@ export function NetworkErrorMessage({ message, dismiss }) {
 				<span aria-hidden="true">ошибка</span>
 			</button>
 		</div>
-	)
+	);
 }

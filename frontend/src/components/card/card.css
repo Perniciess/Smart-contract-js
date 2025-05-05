@@ -9,7 +9,6 @@
 	text-align: center;
 }
 
-
 .car-title {
 	font-size: 20px;
 	font-weight: 600;
@@ -83,7 +82,6 @@
 	transition: all 0.2s ease;
 }
 
-
 .span-rented {
 	text-align: center;
 	width: 80%;
@@ -103,7 +101,6 @@
 	transform: translateY(-1px);
 	opacity: 0.9;
 }
-
 
 @media (max-width: 480px) {
 	.car-card {

@@ -1,5 +1,5 @@
-import "./header.css";
+import './header.css';
 
 export const Header = () => {
-  return <header>Наши автомобили</header>;
+	return <header>Наши автомобили</header>;
 };
