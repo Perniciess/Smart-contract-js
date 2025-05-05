@@ -6,12 +6,12 @@ async function main() {
 
   await carRental.waitForDeployment();
 
-  console.log(`🚗 CarRental deployed to: ${carRental.target}`);
+  console.log(`CarRental deployed to: ${carRental.target}`);
 }
 
 main()
   .then(() => process.exit(0))
   .catch((error) => {
-    console.error("❌ Deployment error:", error);
+    console.error("Deployment error:", error);
     process.exit(1);
   });
